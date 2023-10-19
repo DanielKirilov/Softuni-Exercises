@@ -3,14 +3,21 @@
 <!-- Starts Head Section -->
 
 <head>
-    <link rel="stylesheet" href="/static/css/styles.css">
-    <link rel="icon" type="image/x-icon" href="/static/images/free-30-instagram-stories-icons23_122570.png">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" type="image/x-icon" href="/images/free-30-instagram-stories-icons23_122570.png">
     <title>Petstagram</title>
 </head>
 
 <!-- Starts Body Section -->
 
 <body>
+    <!--Error Container-->
+
+    <!-- <div>
+        <div class="errorContainer">
+            <p>Error</p>
+        </div>
+    </div> -->
 
     <!-- Starts Header Section with Navigation Bar -->
     <header>
@@ -19,9 +26,8 @@
                 <div class="logo">
                     <!-- Link to Home Page -->
                     <a href="#">
-                        <img width="50px" src="/static/images/free-30-instagram-stories-icons23_122570.png" alt="img1">
+                        <img width="50px" src="/images/free-30-instagram-stories-icons23_122570.png" alt="img1">
                     </a>
-
                     <!-- Link to Home Page -->
                     <a class="home" href="#">
                         <i>Petstagram</i>
@@ -80,43 +86,17 @@
 
     <!-- Starts Main Section -->
     <main>
-        <!-- Start Add Photo Section -->
-        <div class="createPage">
-            <h2>Add photo</h2>
-            <!-- Start Add Photo Form -->
-            <form action="">
-                <p>
-                    <input type="text" name="" placeholder="Name">
-                </p>
+        <!--Welcome Page-->
+        <section class="welcome-content">
+            <article class="welcome-content-text">
+                <h1>Place for Your</h1>
+                <h1 class="bold-welcome">Pets photos</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
+            </article>
+            <article class="welcome-content-image">
+                <img src="/images/header-dog.png" alt="dog">
+            </article>
+        </section>
 
-                <p>
-                    <input type="number" name="" placeholder="Age">
-                </p>
-
-                <p>
-                    <textarea type="text" name="" placeholder="Description"></textarea>
-                </p>
-
-                <p>
-                    <input type="text" name="" placeholder="Location">
-                </p>
-
-                <p>
-                    <input type="text" name="" placeholder="Link to image">
-                </p>
-                <!-- Add Photo Button -->
-                <button class="add-btn" type="submit">Add Photo</button>
-            </form>
-        </div>
     </main>
 
-    <!-- Start Footer Section -->
-    <div class="footer">
-        <span class="footer-section">
-            © 2023 SoftUni Back-End Exam
-        </span>
-    </div>
-
-</body>
-
-</html>
