@@ -4,6 +4,11 @@ exports.login = (username, password) => {
   //
 };
 
-exports.register = (userData) => {
-  User.create(userData)
+exports.register = async (userData) => {
+  const user = User.findOne({ username: userData.userName });
+
+  if (user) {
+    throw new Error("Username is already taken!");
+  }
+  return User.create(userData);
 };
