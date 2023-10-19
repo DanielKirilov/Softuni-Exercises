@@ -5,7 +5,7 @@ exports.login = (username, password) => {
 };
 
 exports.register = async (userData) => {
-  const user = User.findOne({ username: userData.userName });
+  const user = await User.findOne({ username: userData.userName });
 
   if (user) {
     throw new Error("Username is already taken!");
