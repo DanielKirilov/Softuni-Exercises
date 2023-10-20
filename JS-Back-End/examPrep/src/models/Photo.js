@@ -4,6 +4,7 @@ const photoSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, "Name is required!"],
+    minLength: [2, "Name should be atleast 2 characters!"],
   },
   image: {
     type: String,
@@ -12,21 +13,19 @@ const photoSchema = new mongoose.Schema({
   age: {
     type: Number,
     required: [true, "Age is required!"],
+    min: 1,
+    max: 100,
   },
   description: {
     type: String,
     required: [true, "Description is required!"],
+    minLength: 5,
+    maxlength: 50,
   },
   location: {
     type: String,
     required: [true, "Location is required!"],
   },
-    comment: [
-      {
-        userId: mongoose.Types.ObjectId,
-        meessage: String,
-      }
-    ],
   owner: {
     type: mongoose.Types.ObjectId,
     ref: "User",

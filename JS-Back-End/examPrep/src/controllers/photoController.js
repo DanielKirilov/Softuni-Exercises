@@ -49,18 +49,13 @@ router.get("/:photoId/edit", async (req, res) => {
 });
 
 router.post("/:photoId/edit", async (req, res) => {
-  const photoId = req.params.photoId;
-  const photoData = req.body;
-
   try {
-    await photoManager.edit(photoId, photoData);
+    const photoData = req.body;
+    await photoManager.edit(req.params.photoId, photoData);
 
-    res.redirect(`/photos/${photoId}/details`);
+    res.redirect(`/photos/${req.params}`)
   } catch (err) {
-    res.render("photos/edit", {
-      error: "Unable to update photo",
-      ...photoData,
-    });
+    res.render("photos/edit", {error : "Unable to update photo", ...photoData})
   }
 });
 
