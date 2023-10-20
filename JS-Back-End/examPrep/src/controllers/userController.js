@@ -17,7 +17,7 @@ router.post("/login", async (req, res) => {
 
     res.redirect("/");
   } catch (err) {
-    res.render("users/login", {error: getErrorMessage})
+    res.render("users/login", { error: getErrorMessage });
   }
 });
 
@@ -29,8 +29,14 @@ router.post("/register", async (req, res) => {
   const { username, email, password, repeatPassword } = req.body;
 
   try {
-    await userManager.register({ username, email, password, repeatPassword });
-    res.redirect("/users/login");
+    const token = await userManager.register({
+      username,
+      email,
+      password,
+      repeatPassword,
+    });
+    res.cookie(TOKEN_KEY, token);
+    res.redirect("/");
   } catch (err) {
     res.render("users/register", { error: getErrorMessage(err) });
   }

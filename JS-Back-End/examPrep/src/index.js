@@ -7,6 +7,7 @@ const routes = require("./routes");
 const cookieParser = require("cookie-parser");
 
 const { auth } = require("./middlewares/authMiddleware");
+const {errorHandler} = require("./middlewares/errorHandlerMiddleware")
 const app = express();
 
 // TODO: CHANGE DATABASE NAME
@@ -28,5 +29,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(auth);
 app.use(routes);
+app.use(errorHandler)
 
 app.listen(5000, console.log("Server is listening on port 5000"));
