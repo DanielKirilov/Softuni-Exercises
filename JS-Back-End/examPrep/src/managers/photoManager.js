@@ -7,3 +7,4 @@ exports.getOne = (photoId) => Photo.findById(photoId).populate("owner");
 exports.create = (photoData) => {
   Photo.create(photoData);
 };
+exports.delete = (photoId) => Photo.findByIdAndDelete(photoId)

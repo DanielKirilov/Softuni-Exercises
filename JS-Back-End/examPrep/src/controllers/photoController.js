@@ -15,9 +15,8 @@ router.get("/create", (req, res) => {
 
 router.post("/create", async (req, res) => {
   const photoData = { ...req.body, owner: req.user._id };
-  
 
-console.log(photoData);
+  console.log(photoData);
   try {
     await photoManager.create(photoData);
 
@@ -27,13 +26,22 @@ console.log(photoData);
   }
 });
 
-router.get("/:photoId/details", async(req, res) => {
-  const photoId =req.params.photoId;
+router.get("/:photoId/details", async (req, res) => {
+  const photoId = req.params.photoId;
   const photo = await photoManager.getOne(photoId).lean();
-  const isOwner = req.user._id == photo.owner._id;
+  const isOwner = req.user?._id == photo.owner._id;
 
+  res.render("photos/details", { photo, isOwner });
+});
 
-  res.render('photos/details', { photo, isOwner })
-})
+router.get("/:photoId/delete", async (req, res) => {
+  const photoId = req.params.photoId
+  try {
+    await photoManager.delete(photoId);
+    res.redirect("/photos");
+  } catch (err) {
+    res.render(`/photos/${photoId}/details`, {error : "Unsuccessful deletion!"})
+  }
+});
 
 module.exports = router;
